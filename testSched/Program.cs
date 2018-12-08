@@ -101,19 +101,51 @@ namespace testSched
 
             List<Instructor> isx = new List<Instructor>();
 
-
             for (int i = 0; i < 5; i++)
             {
-                isx.Add(new Instructor());                    
+                isx.Add(new Instructor(1,i+1));                    
             }
 
             /*  Set all 5 instructors */
-
+           
             int j = 0;
+       //     isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).FirstName = "Jake"; 
+            isx.ElementAt(j).LastName = "Towns";
+            isx.ElementAt(j).Title = "Dr.";
+            isx.ElementAt(j).OfficeHours = "MWF by appointment";
+            j++;
 
-            j = isx.Count;
+       //     isx.ElementAt(j).SchoolID =  1;
+            isx.ElementAt(j).FirstName = "Tim";
+            isx.ElementAt(j).LastName = "Marks";
+            isx.ElementAt(j).Title = "Dr.";
+            isx.ElementAt(j).OfficeHours = "TT by appointment";
+            j++;
 
-            j = 0;
+       //     isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).FirstName = "Chi";
+            isx.ElementAt(j).LastName = "Wong";
+            isx.ElementAt(j).Title = "Dr.";
+            isx.ElementAt(j).OfficeHours = "MW 8-11 AM";
+            j++;
+
+       //     isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).FirstName = "Eric";
+            isx.ElementAt(j).LastName = "Maze";
+            isx.ElementAt(j).Title = "Dr.";
+            isx.ElementAt(j).OfficeHours = "TT 8-11 AM";
+            j++;
+
+     //       isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).FirstName = "Paul";
+            isx.ElementAt(j).LastName = "Henderson";
+            isx.ElementAt(j).Title = "Dr.";
+            isx.ElementAt(j).OfficeHours = "WF 8-11 AM";
+            j++;
+
+
+            /*
             isx[j].SchoolID = _intSchoolID;
             isx[j].FirstName = "Jake";
             isx[j].LastName = "Towns";
@@ -148,14 +180,15 @@ namespace testSched
             isx[j].LastName = "Henderson";
             isx[j].Title = "Dr.";
             isx[j].OfficeHours = "MW 8-11 AM";
+            */
 
             string insData = string.Empty;
 
-            for (j = 0; j < 5; j++)
+            for (j = 0; j < isx.Count; j++)
             {
-                insData = isx[j].Title + " " + isx[j].FirstName + " ";
-                insData = insData + isx[j].LastName + " ";
-                insData = insData + isx[j].OfficeHours;
+                insData = isx.ElementAt(j).FirstName + " " + isx.ElementAt(j).LastName + " ";
+                insData = insData + isx.ElementAt(j).Title;
+                insData = insData + isx.ElementAt(j).OfficeHours;
                 Console.WriteLine(insData);
             };
 
@@ -185,7 +218,7 @@ namespace testSched
 
         public Instructor(List<Instructor> iInstruct, int iPos)
         {
-            _InstructorID = iInstruct[iPos].InstructorID;
+            _InstructorID = iInstruct.ElementAt(iPos).InstructorID;
         }
 
         public Instructor(int iSchoolID, int InstructorID)
