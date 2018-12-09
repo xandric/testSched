@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
@@ -16,6 +17,8 @@ namespace testSched
         private string _strSchoolName;
         private string _strSchoolType;
         private string _webURL;
+        private int iSchoolID = 0;
+        
 
         public School()
         {
@@ -30,22 +33,25 @@ namespace testSched
             _strSchoolID = strSchoolID;
         }
 
-        public School(int iSchoolID, string strSchoolID)
+        public School(int iSchoolIDtestSched, string strSchoolID)
         {
-            _intSchoolID = iSchoolID;
+            _intSchoolID = iSchoolIDtestSched;
             _strSchoolID = strSchoolID;
+            iSchoolID = _intSchoolID;
         }
 
         public void InitSchool(int iSchoolID, string strSchoolName, string strSchoolType, string webURL)
         {
             _intSchoolID = iSchoolID;
+            SchoolID = iSchoolID;
             _strSchoolID = Convert.ToString(_intSchoolID);
             _strSchoolName = strSchoolName;
             _strSchoolType = strSchoolType;
             _webURL = webURL;
         }
 
-        public int ISchoolID { get; set; }
+        
+        public int SchoolID { get; set; }
 
         public string strSchoolID
         {
@@ -54,6 +60,8 @@ namespace testSched
 
             set => strSchoolID = _strSchoolID;
         }
+
+
         public string strSchoolName
         {
 
@@ -61,6 +69,8 @@ namespace testSched
 
             set => strSchoolName = _strSchoolName;
         }
+
+
         public string strSchoolType
         {
 
@@ -78,122 +88,79 @@ namespace testSched
         }
 
 
-        public void GO()
+        public void GO(School s)
         {
             //Console.WriteLine(s.strSchoolID + "  " + s.strSchoolName + "  " + s.strSchoolType + "  " + s.webURL);
 
             Console.WriteLine(_strSchoolID + "  " + _strSchoolName + "  " + _strSchoolType + "  " + _webURL);
 
-            // Add Instructors
+            
+            int iGOSchoolID = 0;
 
-            /*
-                List<int> termsList = new List<int>();
-                for (int runs = 0; runs < 400; runs++)
-                {
-                    termsList.Add(value);
-                }
-
-                // You can convert it back to an array if you would like to
-                int[] terms = termsList.ToArray();
-
-*/
-
+            iGOSchoolID = 1;
+            iGOSchoolID = s.SchoolID;
 
             List<Instructor> isx = new List<Instructor>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 1; i < 6; i++)
             {
-                isx.Add(new Instructor(1,i+1));                    
+                isx.Add(new Instructor(iGOSchoolID, i));                    
             }
 
             /*  Set all 5 instructors */
            
             int j = 0;
-       //     isx.ElementAt(j).SchoolID = 1;
+            int k = 1;
+            isx.ElementAt(j).InstructorID = k;
             isx.ElementAt(j).FirstName = "Jake"; 
             isx.ElementAt(j).LastName = "Towns";
             isx.ElementAt(j).Title = "Dr.";
             isx.ElementAt(j).OfficeHours = "MWF by appointment";
             j++;
+            k++;
 
-       //     isx.ElementAt(j).SchoolID =  1;
+            isx.ElementAt(j).InstructorID = k;
             isx.ElementAt(j).FirstName = "Tim";
             isx.ElementAt(j).LastName = "Marks";
             isx.ElementAt(j).Title = "Dr.";
             isx.ElementAt(j).OfficeHours = "TT by appointment";
             j++;
+            k++;
 
-       //     isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).InstructorID = k;
             isx.ElementAt(j).FirstName = "Chi";
             isx.ElementAt(j).LastName = "Wong";
             isx.ElementAt(j).Title = "Dr.";
             isx.ElementAt(j).OfficeHours = "MW 8-11 AM";
             j++;
+            k++;
 
-       //     isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).InstructorID =k;
             isx.ElementAt(j).FirstName = "Eric";
             isx.ElementAt(j).LastName = "Maze";
             isx.ElementAt(j).Title = "Dr.";
             isx.ElementAt(j).OfficeHours = "TT 8-11 AM";
             j++;
+            k++;
 
-     //       isx.ElementAt(j).SchoolID = 1;
+            isx.ElementAt(j).InstructorID = k;
             isx.ElementAt(j).FirstName = "Paul";
             isx.ElementAt(j).LastName = "Henderson";
             isx.ElementAt(j).Title = "Dr.";
             isx.ElementAt(j).OfficeHours = "WF 8-11 AM";
-            j++;
 
 
-            /*
-            isx[j].SchoolID = _intSchoolID;
-            isx[j].FirstName = "Jake";
-            isx[j].LastName = "Towns";
-            isx[j].Title = "Dr.";
-            isx[j].OfficeHours = "MWF by appointment";
-            j++;
-
-            isx[j].SchoolID = _intSchoolID;
-            isx[j].FirstName = "Tim";
-            isx[j].LastName = "Marks";
-            isx[j].Title = "Dr.";
-            isx[j].OfficeHours = "TT by appointment";
-            j++;
 
 
-            isx[j].SchoolID = _intSchoolID;
-            isx[j].FirstName = "Chi";
-            isx[j].LastName = "Wong";
-            isx[j].Title = "Dr.";
-            isx[j].OfficeHours = "MW 8-11 AM";
-            j++;
-
-            isx[j].SchoolID = _intSchoolID;
-            isx[j].FirstName = "Eric";
-            isx[j].LastName = "Maze";
-            isx[j].Title = "Dr.";
-            isx[j].OfficeHours = "TT 8-11 AM";
-            j++;
-
-            isx[j].SchoolID = _intSchoolID;
-            isx[j].FirstName = "Paul";
-            isx[j].LastName = "Henderson";
-            isx[j].Title = "Dr.";
-            isx[j].OfficeHours = "MW 8-11 AM";
-            */
 
             string insData = string.Empty;
 
             for (j = 0; j < isx.Count; j++)
             {
-                insData = isx.ElementAt(j).FirstName + " " + isx.ElementAt(j).LastName + " ";
-                insData = insData + isx.ElementAt(j).Title;
-                insData = insData + isx.ElementAt(j).OfficeHours;
+                insData = isx.ElementAt(j).Title + " " + isx.ElementAt(j).FirstName + " " + isx.ElementAt(j).LastName + " " + isx.ElementAt(j).OfficeHours;
                 Console.WriteLine(insData);
             };
 
-
-         //   Console.WriteLine("Instructor [0] ID = " + Convert.ToString(isx[1].getCurID()));
 
 
 
@@ -228,64 +195,35 @@ namespace testSched
         }
 
 
-        /*
-        public int getCurID()
-        {
-            return (_InstructorID);
-        }
-        public void setCurID(int iInstructorID)
-        {
-            _InstructorID = iInstructorID;
-        }
-        */
-
         public int SchoolID
         {
-
-            get =>  _SchoolID ;
-
-            set => SchoolID = _SchoolID;
+            get; set;
         }
+         
 
         public int InstructorID
         {
 
-            get => _InstructorID;
-
-            set => InstructorID = _InstructorID;
+            get; set;
         }
-
 
         public string FirstName
         {
-
-            get => _strFirstName;
-
-            set => FirstName = _strFirstName;
+            get; set;
         }
-
         public string LastName
         {
-
-            get => _strLastName;
-
-            set => LastName = _strLastName;
+            get; set;
         }
         
         public string Title
         {
-
-            get => _strTitle;
-
-            set => Title = _strTitle;
+            get; set;
         }
 
         public string OfficeHours
         {
-
-            get => _strOfficeHours;
-
-            set => OfficeHours = _strOfficeHours;
+            get; set;
         }
     }
 
@@ -297,9 +235,8 @@ namespace testSched
         {
             School testSchool;
 
+            Debug.WriteLine("test exec");
           //  Console.WriteLine("test exec");
-
-            // School testSchool;
 
             string conSchoolName = "Chattanooga State";
             string conSchoolType = "2 year";
@@ -309,14 +246,11 @@ namespace testSched
             testSchool = new School();
             testSchool.InitSchool(1, conSchoolName, conSchoolType, webURL);
 
-            //Console.WriteLine(testSchool.strSchoolID + "  " + testSchool.strSchoolName + "  " + testSchool.strSchoolType);
+            Debug.WriteLine(testSchool.strSchoolID + "  " + testSchool.strSchoolName + "  " + testSchool.strSchoolType);
+
+            testSchool.GO(testSchool);
 
 
-            //   conBegin = new Program.conBegin();
-            testSchool.GO();
-
-            //GO gO;
-            //gO = new GO(testSchool);
 
 
 
