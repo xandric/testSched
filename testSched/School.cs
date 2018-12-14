@@ -87,13 +87,67 @@ namespace testSched
             _webURL = webURL;
         }
 
+
+        internal bool Populate_Subjects(ref List<Subject> sub, int intSchoolID)
+        {
+            const int conSubjectCount= 5;
+            int j = 0;
+            int k = 1;
+            #region Load Subjects           
+            for (int i = 0; i < conSubjectCount; i++)
+            {
+                sub.Add(new Subject(intSchoolID, i));
+            }
+
+            sub.ElementAt(j).SchoolID = intSchoolID;
+            sub.ElementAt(j).SubjectID = k;
+            sub.ElementAt(j).SubjectName = "Math";
+            sub.ElementAt(j).SubjectCode = "Math 1720";
+            j++;
+            k++;
+
+            sub.ElementAt(j).SchoolID = intSchoolID;
+            sub.ElementAt(j).SubjectID = k;
+            sub.ElementAt(j).SubjectName = "ENGR";
+            sub.ElementAt(j).SubjectCode = "ENGR 1850";
+            j++;
+            k++;
+
+            sub.ElementAt(j).SchoolID = intSchoolID;
+            sub.ElementAt(j).SubjectID = k;
+            sub.ElementAt(j).SubjectName = "ENGR";
+            sub.ElementAt(j).SubjectCode = "ENGR 1011";
+            j++;
+            k++;
+
+            sub.ElementAt(j).SchoolID = intSchoolID;
+            sub.ElementAt(j).SubjectID = k;
+            sub.ElementAt(j).SubjectName = "ART";
+            sub.ElementAt(j).SubjectCode = "ART 1030";
+            j++;
+            k++;
+
+            sub.ElementAt(j).SchoolID = intSchoolID;
+            sub.ElementAt(j).SubjectID = k;
+            sub.ElementAt(j).SubjectName = "ECON";
+            sub.ElementAt(j).SubjectCode = "ECON 2100";
+            j++;
+            k++;
+
+            #endregion
+            return (true);
+        }
+
+
+
         public bool Populate_Instructors(ref List<Instructor> isx, int intSchoolID)
         {
             int j = 0;
             int k = 1;
+            const int conInstructorCount = 8;
 
             #region Load Instructors           
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < conInstructorCount; i++)
             {
                 isx.Add(new Instructor(intSchoolID, i));
             }
@@ -183,20 +237,16 @@ namespace testSched
             //Console.WriteLine(_strSchoolID + "  " + _strSchoolName + "  " + _strSchoolType + "  " + _webURL);
 
 
-            int j = 0;
-
-
-            // Add records for instructors on the given 
+           // Add records for instructors on the given 
             // SchoolID
 
             List<Instructor> isx = new List<Instructor>();
 
             Populate_Instructors(ref isx, s.SchoolID);
 
-
             string insData = string.Empty;
 
-            for (j = 0; j < isx.Count; j++)
+            for (int j = 0; j < isx.Count; j++)
             {
                 insData = isx.ElementAt(j).Title + " " + isx.ElementAt(j).FirstName + " " + isx.ElementAt(j).LastName + " " + isx.ElementAt(j).Department + " " + isx.ElementAt(j).DepartmentTitle;
                 Console.WriteLine(insData);
@@ -204,6 +254,23 @@ namespace testSched
 
 
 
+            // Add records for subjects on the given 
+            // SchoolID to schedule
+
+            List<Subject> subj = new List<Subject>();
+
+            Populate_Subjects(ref subj, s.SchoolID);
+
+            string subData = string.Empty;
+
+            for (int k = 0; k < subj.Count; k++)
+            {
+                subData = "SubjectID #" + subj.ElementAt(k).SubjectID.ToString();
+                subData = subData + " SchoolID =" + subj.ElementAt(k).SchoolID.ToString();
+                subData = subData + "   Subject =  " + subj.ElementAt(k).SubjectName.ToString();
+                subData = subData + "   Subject Code = " + subj.ElementAt(k).SubjectCode.ToString();
+                Console.WriteLine(subData);
+            };
 
         }
     }
