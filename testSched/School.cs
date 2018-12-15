@@ -144,7 +144,7 @@ namespace testSched
         {
             int j = 0;
             int k = 1;
-            const int conInstructorCount = 8;
+            const int conInstructorCount = 11;
 
             #region Load Instructors           
             for (int i = 0; i < conInstructorCount; i++)
@@ -226,6 +226,32 @@ namespace testSched
             j++;
             k++;
 
+            isx.ElementAt(j).InstructorID = k;
+            isx.ElementAt(j).FirstName = "Unknown #1";
+            isx.ElementAt(j).LastName = "ENGR Prof 1011";
+            isx.ElementAt(j).Title = "Associate Professor, Engineering";
+            isx.ElementAt(j).Department = "Engineering";
+            isx.ElementAt(j).DepartmentTitle = "Engineering (1011)";
+            j++;
+            k++;
+
+            isx.ElementAt(j).InstructorID = k;
+            isx.ElementAt(j).FirstName = "Unknown #2";
+            isx.ElementAt(j).LastName = "ENGR Prof 1850";
+            isx.ElementAt(j).Title = "Associate Professor, Engineering";
+            isx.ElementAt(j).Department = "Engineering";
+            isx.ElementAt(j).DepartmentTitle = "Engineering (1850)";
+            j++;
+            k++;
+
+            isx.ElementAt(j).InstructorID = k;
+            isx.ElementAt(j).FirstName = "Mr.";
+            isx.ElementAt(j).LastName = "Adcock";
+            isx.ElementAt(j).Title = "Associate Professor, Economics";
+            isx.ElementAt(j).Department = "ECON";
+            isx.ElementAt(j).DepartmentTitle = "ECON (2100)" ;
+            j++;
+            k++;
             #endregion
 
             return (true);
