@@ -20,11 +20,12 @@ namespace testSched
         {
             School testSchool;
 
-            using (SqlConnection conn = new SqlConnection("Integrated Security= SSPI;Initial Catalog=Education"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security= SSPI"))
             {
-                //conn.ConnectionString = "Server = MAXIMUSXI\DEV_001;Database=Education;Trusted_Connection=true";
+                conn.ConnectionString = "Server = MAXIMUSXI\\DEV_001;Database=Education;Trusted_Connection=true";
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from School");
+                cmd.Connection = conn;
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while(reader.Read())
